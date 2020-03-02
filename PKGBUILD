@@ -5,10 +5,10 @@
 
 pkgname=dwarffortress-ironhand
 _pkgname=dwarffortress
-pkgver=0.47.03
-_pkgver=47_03
+pkgver=0.47.04
+_pkgver=47_04
 pkgrel=1
-tilesetver=47.03
+tilesetver=47.04
 pkgdesc="A single-player fantasy game in which you build a dwarven outpost or play an adventurer in a randomly generated world"
 arch=(x86_64)
 url="http://www.bay12games.com/dwarves/"
@@ -25,15 +25,15 @@ install=${_pkgname}.install
 source=(git://github.com/svenstaro/dwarf_fortress_unfuck.git#tag=${pkgver}
         dwarffortress
         dwarffortress.desktop
-        "ironhand-${tilesetver}.tar.gz::https://github.com/DFgraphics/Ironhand/archive/${tilesetver}.tar.gz"
+        "ironhand-$tilesetver.tar.gz::https://github.com/DFgraphics/Ironhand/archive/$tilesetver.tar.gz"
         dwarffortress.png
         "http://www.bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2")
 sha256sums=('SKIP'
             '211eaec6559d4fd5c08341dbed1f27bfab997a57bdf61fd268f9940e244652c5'
             'e79e3d945c6cc0da58f4ca30a210c7bf1bc3149fd10406d1262a6214eb40445a'
-            'dfd0dc9c0d29f5c44367d30496e72d5a911479b1b9452d870ab41368dc3b0f8f'
+            'fa30d5b11fe1fa3e14b85e75ea599ad0dd6ac4e8a2139efac5d4f048b58d2935'
             '83183abc70b11944720b0d86f4efd07468f786b03fa52fe429ca8e371f708e0f'
-            '1a33a1be06f6cdd08f94e39c4433ab35dc8ad0a7e319e8d19436f7d473ed785e')
+            '1de5872bf3ac32906a0082129ec88d6879b6ac7059a3513607d628090b1328e6')
 
 conflicts=(dwarffortress dwarffortress-obsidian)
 provides=("dwarffortress=$pkgver")
@@ -51,7 +51,7 @@ package() {
   cp -r "$srcdir"/df_linux "$pkgdir"/opt/"$_pkgname"
   rm -r "$pkgdir"/opt/"$_pkgname"/df "$pkgdir"/opt/"$_pkgname"/libs/* "$pkgdir"/opt/"$_pkgname"/g_src
 
-  cp -r "$srcdir/Dwarf Fortress"/* "$pkgdir"/opt/"$_pkgname"
+  cp -r "$srcdir"/Ironhand-$tilesetver/* "$pkgdir"/opt/"$_pkgname"
 
   find "$pkgdir"/opt/"$_pkgname" -type d -exec chmod 755 {} +
   find "$pkgdir"/opt/"$_pkgname" -type f -exec chmod 644 {} +
